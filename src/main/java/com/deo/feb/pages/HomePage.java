@@ -1,6 +1,7 @@
 package com.deo.feb.pages;
 
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -74,7 +75,7 @@ public class HomePage extends BasePage  {
     @FindBy(xpath = "//ul[@id='homefeatured']/li[3]//div[@class='right-block']//a[@title='Add to cart']")
     private WebElement addToCartButton3 ;
 
-    static final org.apache.logging.log4j.Logger LOGGER = LogManager.getLogger(HomePage.class.getName());
+    static final Logger LOGGER = LogManager.getLogger(HomePage.class.getName());
 
     public HomePage openPopularCatalog(){
         popularCatalog.click();
@@ -84,14 +85,14 @@ public class HomePage extends BasePage  {
 
     public HomePage openBestSellerCatalog(){
         bestSellerCatalog.click();
-        LOGGER.info("<<  opening POPULAR catalog >>");
+        LOGGER.info("<<  opening BEST SELLER catalog >>");
         return new HomePage(driver);
     }
 
     public HomePage getProductNames(){
         for (WebElement name: productNames) {
             LOGGER.info("<<  Printing catalog item names  >>" + name.getText());
-            System.out.println("Below product are listed in catalog : " + name.getText());
+            System.out.println("<< Below product are listed in catalog : " + name.getText() + " >>");
         }
         return new HomePage(driver);
     }
@@ -99,17 +100,17 @@ public class HomePage extends BasePage  {
     public HomePage getProductPrices(){
         for (WebElement price: productPrices) {
             LOGGER.info("<<  Printing catalog item prices  >>" + price.getText());
-            System.out.println("Below prices are listed in catalog : " + price.getText());
+            System.out.println("<< Below prices are listed in catalog : " + price.getText() + " >>");
         }
         return new HomePage(driver);
     }
 
 
     public AddToCartPopUp addToCart(){
-        LOGGER.info("<< Using Action driver to simulate mouse hover scenario>>");
+        LOGGER.info("<< Using Action driver to simulate mouse hover scenario >>");
         Actions action = new Actions(driver);
         action.moveToElement(productContainer1).build().perform();
-        LOGGER.info("waiting for add to cart button to appear");
+        LOGGER.info("<< waiting for add to cart button to appear >>");
         waitForElement(addToCartButton1);
         addToCartButton1.click();
         return new AddToCartPopUp(driver);

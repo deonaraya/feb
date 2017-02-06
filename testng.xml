@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="false">
+    <listeners>
+        <listener class-name="com.deo.feb.config.Listener1" />
+    </listeners>
+    <test name="Test">
+        <!--<parameter name="browser" value="firefox"></parameter>-->
+        <classes>
+            <class name="com.deo.feb.tryTests"/>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->
